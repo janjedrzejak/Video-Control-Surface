@@ -24,6 +24,7 @@ int buttonState6 = 0;
 int buttonState7 = 0;
 int buttonState8 = 0;
 int volume1 = 0;
+int volume1a = 0;
 
 void setup() {
   Serial.begin(115200); //Set MIDI baud rate to communication
@@ -124,11 +125,11 @@ void loop() {
     digitalWrite(LED_BUILTIN, LOW);
   }
   //-----------------------------------------
-
-  volume1 = analogRead(A0) / 8; //min 0 max 1023;
-  //Serial.println(volume1, HEX);
-  
-  noteOn(0xB0, 0x23, volume1); //send midi as continues values 
-  delay(200); //wait 200ms
-  
+  //discovering potentiometer value 
+  volume1 = analogRead(A0) / 8; //read value
+  delay(20); //wait 20ms
+  volume1a = analogRead(A0) / 8; //read next value (for checking changes)
+  if (volume1!=volume1a) { //if change is discover send to serial command, if not, don't send
+    noteOn(0xB0, 0x23, volume1a); //send midi as continues values
+  }
 }
