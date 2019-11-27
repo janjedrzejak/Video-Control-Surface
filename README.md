@@ -5,3 +5,6 @@ Device uses standard USB port in Your computer to MIDI communication with switch
 
 ## Prototype device
 Protype device is in preparing process. Working system is ready on the contact plate at the moment.
+
+### First version circuit diagram 
+Download device's circuit diagram [here](https://github.com/janjedrzejak/Video-Control-Surface/blob/master/Switcher-sketch_bb.pdf)
