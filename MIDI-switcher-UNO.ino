@@ -10,7 +10,11 @@ const int buttonPin1 = 2;  const int buttonPin2 = 3;
 const int buttonPin3 = 4;  const int buttonPin4 = 5;    
 //Preview buttons pins declared
 const int buttonPin5 = 6;  const int buttonPin6 = 7;     
-const int buttonPin7 = 8;  const int buttonPin8 = 9;     
+const int buttonPin7 = 9;  const int buttonPin8 = 10;     
+//74HC595
+const int lPin = 8;       
+const int cPin = 12;
+const int dPin = 11;
 
 //initialize variables
 int buttonState1 = 0;   int buttonState2 = 0;
@@ -23,10 +27,20 @@ bool initState=true;
 
 void setup() {
   Serial.begin(115200); 
-    for(int i=2: i<10; i++) { //setup type of pin for buttons from Pin no 2 till Pin no 9
-        pinMode(i, INPUT)
-    }
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(buttonPin3, INPUT);
+  pinMode(buttonPin4, INPUT);
+  pinMode(buttonPin5, INPUT);
+  pinMode(buttonPin6, INPUT);
+  pinMode(buttonPin7, INPUT);
+  pinMode(buttonPin10, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(lPin, OUTPUT);
+  pinMode(cPin, OUTPUT);
+  pinMode(dPin, OUTPUT);
+
+
 }
 //Function - send note to serial port
 void noteOn(int cmd, int pitch, int velocity) {
@@ -34,6 +48,15 @@ void noteOn(int cmd, int pitch, int velocity) {
   Serial.write(pitch);
   Serial.write(velocity);
 }
+
+void shiftLed(int p) {
+  int pin;
+  pin = 1<< p;
+  digitalWrite(lPin, LOW);
+  shiftOut(dPin, cPin, MSBFIRST, pin);
+  digitalWrite(lPin, HIGH);
+}
+
 void loop() {
   //reading digital states
   buttonState1 = digitalRead(buttonPin1);
