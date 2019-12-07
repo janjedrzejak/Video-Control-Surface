@@ -72,24 +72,28 @@ void loop() {
         if (buttonState1 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
             noteOn(0x90, 0x10, 0x45); //send midi as note on
+            shiftLed(1);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
         if (buttonState2 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
             noteOn(0x90, 0x11, 0x45); //send midi as note on  
+            shiftLed(2);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
         if (buttonState3 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
             noteOn(0x90, 0x12, 0x45); //send midi as note on\   
+            shiftLed(3);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
         if (buttonState4 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
-            noteOn(0x90, 0x13, 0x45); //send midi as note on   
+            noteOn(0x90, 0x13, 0x45); //send midi as note on
+            shiftLed(4);   
         } else {
             digitalWrite(LED_BUILTIN, LOW); 
         }
@@ -97,24 +101,28 @@ void loop() {
         if (buttonState5 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
             noteOn(0x90, 0x20, 0x45); //send midi  as note on  
+            shiftLed(5);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
         if (buttonState6 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
-            noteOn(0x90, 0x21, 0x45); //send midi as note on    
+            noteOn(0x90, 0x21, 0x45); //send midi as note on 
+            shiftLed(6);   
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
         if (buttonState7 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
             noteOn(0x90, 0x22, 0x45); //send midi as note on    
+            shiftLed(7);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
         if (buttonState8 == HIGH) {
             digitalWrite(LED_BUILTIN, HIGH);
             noteOn(0x90, 0x23, 0x45); //send midi as note on   
+            shiftLed(8);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
         }
