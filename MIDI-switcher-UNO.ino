@@ -34,7 +34,7 @@ void setup() {
   pinMode(buttonPin5, INPUT);
   pinMode(buttonPin6, INPUT);
   pinMode(buttonPin7, INPUT);
-  pinMode(buttonPin10, INPUT);
+  pinMode(buttonPin8, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(lPin, OUTPUT);
   pinMode(cPin, OUTPUT);
@@ -132,10 +132,9 @@ void loop() {
   delay(20); //wait 20ms
   rezFaderNextPosition = analogRead(A0) / 8; //read next value (for checking changes)
   if(initState==true) { //if first connection send potentiometer value
-    noteOn(0xB0, 0x23, volume1a);
+    noteOn(0xB0, 0x23, rezFaderNextPosition);
     initState=false;
   }
-  if (rezFader!=volume1a) { //if change is discover send to serial command, if not, don't send midi
-    noteOn(0xB0, 0x23, volume1a); //send midi as continues values
+  if (rezFader!=rezFaderNextPosition) { //if change is discover send to serial command, if not, don't send midi
+    noteOn(0xB0, 0x23, rezFaderNextPosition); //send midi as continues values
   }
-}
